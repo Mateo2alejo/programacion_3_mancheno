@@ -1,0 +1,23 @@
+{
+  "name": "programacion_3_mancheno-primer-corte",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mateo2alejo/programacion_3_mancheno.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mateo2alejo/programacion_3_mancheno/issues"
+  },
+  "homepage": "https://github.com/Mateo2alejo/programacion_3_mancheno#readme",
+  "dependencies": {
+    "prompt-sync": "^4.2.0"
+  }
+}
