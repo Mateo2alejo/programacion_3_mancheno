@@ -161,3 +161,13 @@ const anidado = [[1, 2], [3, 4], [5, 6]];
 const plano   = anidado.reduce((acum, arr) => [...acum, ...arr], []);
 console.log(plano);   // [1, 2, 3, 4, 5, 6]
 // alternativa moderna: anidado.flat()
+//Ejercicio 1//
+const celsius = [0, 15, -5, 22, 37, 100, -10, 28];
+const fahrenheit = celsius.map(c => (c * 9/5) + 32);
+console.log("Fahrenheit:", fahrenheit);
+const entre0y30 = celsius.filter(c => c >= 0 && c <= 30);
+console.log("Entre 0 y 30°C:", entre0y30);
+const entre0y30F = celsius
+.filter(c => c >= 0 && c <= 30)
+.map(c => (c * 9/5) + 32);
+console.log("Entre 0 y 30°C en °F:", entre0y30F);
