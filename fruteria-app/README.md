@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-# Materia: Programacion III
-
-## Mancheno, Mateo
-=======
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
@@ -76,4 +71,3 @@ export default defineConfig([
   },
 ])
 ```
->>>>>>> f7e2c8d (Clase-01-07-2026)
