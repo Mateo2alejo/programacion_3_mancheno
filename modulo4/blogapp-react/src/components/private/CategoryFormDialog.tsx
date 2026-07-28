@@ -1,8 +1,6 @@
 // src/components/private/CategoryFormDialog.tsx
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { z } from 'zod'
 import { createCategory, updateCategory } from '@/api/categories.api'
 import type { Category } from '@/types/category.types'
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog'
@@ -11,10 +9,9 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { useToastStore } from '@/store/toast.store'
 
-const schema = z.object({
-  name: z.string().min(2, 'Mínimo 2 caracteres'),
-})
-type FormValues = z.infer<typeof schema>
+interface FormValues {
+  name: string
+}
 
 interface Props {
   open: boolean
@@ -25,8 +22,8 @@ interface Props {
 
 export default function CategoryFormDialog({ open, onOpenChange, category, onSaved }: Props) {
   const { register, handleSubmit, reset, formState: { errors, isSubmitting } } =
-    useForm<FormValues>({ resolver: zodResolver(schema) })
-    const showToast = useToastStore((s) => s.show)
+    useForm<FormValues>({ defaultValues: { name: '' } })
+  const showToast = useToastStore((s) => s.show)
 
   useEffect(() => {
     reset({ name: category?.name ?? '' })
@@ -35,7 +32,7 @@ export default function CategoryFormDialog({ open, onOpenChange, category, onSav
   const onSubmit = async (values: FormValues) => {
     if (category) await updateCategory(category.id, values)
     else await createCategory(values)
-    showToast(`Categoría ${category ? 'actualizada' : 'creada'} con éxito`, 'success')
+    showToast(category ? 'Categoría actualizada' : 'Categoría creada')
     onOpenChange(false)
     onSaved()
   }
@@ -49,7 +46,13 @@ export default function CategoryFormDialog({ open, onOpenChange, category, onSav
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-3">
           <div>
             <Label htmlFor="name">Nombre</Label>
-            <Input id="name" {...register('name')} />
+            <Input
+              id="name"
+              {...register('name', {
+                required: 'Nombre es requerido',
+                minLength: { value: 2, message: 'Mínimo 2 caracteres' },
+              })}
+            />
             {errors.name && <p className="text-sm text-destructive">{errors.name.message}</p>}
           </div>
           <Button type="submit" disabled={isSubmitting} className="w-full">

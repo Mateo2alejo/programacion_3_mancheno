@@ -1,16 +1,13 @@
-import AppShadcn from './AppHome'
-import AppLab from './AppLab'
+// src/App.tsx
+
+//import AppLab from './AppLab'
+//import AppHome from './AppHome'
 import AppHome from './AppHome'
+import AppShadcn from './AppShadcn'
 
-function App() {
 
-  return (
-    <>
-    <AppShadcn />
-    {<AppHome />}
-   {<AppLab />}
-   </>
-  )
+export default function App() {
+  //return <AppLab />
+  // Fase 2 — descomenta y comenta la línea anterior:
+  return <AppHome />
 }
-
-export default App

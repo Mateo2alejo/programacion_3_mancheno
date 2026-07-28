@@ -2,7 +2,7 @@ name: 🚀 Deploy NestJS Blog Backend API to VPS
 
 on:
   push:
-    branches: [main]
+    branches: [SEGUNDO-CORTE]
 
 jobs:
   test:

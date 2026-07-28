@@ -1,5 +1,4 @@
 // src/App.tsx
-
 import WelcomeBanner       from './components/WelcomeBanner'
 import UserGreeting        from './components/UserGreeting'
 import CurrentDateDisplay  from './components/CurrentDateDisplay'
@@ -10,7 +9,11 @@ import PriceTag            from './components/PriceTag'
 import StatusBadge         from './components/StatusBadge'
 import MiniProfileCard     from './components/MiniProfileCard'
 import SimpleInfoTable     from './components/SimpleInfoTable'
-import VehiculosTable      from './components/ProductCard'
+import SimpleInfoCars      from './components/SimpleInfoCars'
+/*import ProductCard         from './components/ProductCard'
+import ProductCatalogList  from './components/ProductCatalogList'
+import UserProfileCard     from './components/UserProfileCard'*/
+
 
 // ┌──────────────────────────────────────────────────────────────────────────┐
 // │  Cambia PASO y guarda (Ctrl+S) para navegar entre componentes.          │
@@ -28,17 +31,16 @@ import VehiculosTable      from './components/ProductCard'
 // │  12  ProductCatalogList  — lista con renderizado condicional de items   │
 // │  13  UserProfileCard     — ejercicio: props complejas + rol             │
 // └──────────────────────────────────────────────────────────────────────────┘
-const PASO = 10
+const PASO = 1
 
 const fruits = [
-  { name: 'Manzana', emoji: '🍎', calories: 52, inSeason: true },
+  { name: 'Manzana', emoji: '🍎', inSeason: true, calories: 52 },
   { name: 'Banana',  emoji: '🍌', calories: 89 },
-  { name: 'Naranja', emoji: '🍊', calories: 47,inSeason: true  },
-  { name: 'Kiwi', emoji: '🥝', calories: 47, inSeason: true },
-  { name: 'Uva', emoji: '🍇', calories: 50},
-  { name: 'Mango', emoji: '🥭', calories: 60},
+  { name: 'Naranja', emoji: '🍊', calories: 47 },
+  { name: 'Kiwi', emoji: '🥝', calories: 61 },
+  { name: 'Piña', emoji: '🍍', calories: 68 },
+  { name: 'Mango', emoji: '🥭', calories: 86 },
 ]
-
 
 const catalog = [
   { id: 1, name: 'Teclado mecánico',  price: 89.99 },
@@ -49,31 +51,30 @@ const catalog = [
 
 export default function App() {
   const content =
-    PASO ===  1 ? <WelcomeBanner  subtitle='Programadores Estrellas'/> :
-    PASO ===  2 ? <UserGreeting name="Ana García" occupation="Desarrolladora Frontend" /> :
+    PASO ===  1 ? <WelcomeBanner subtitle='Programadores Estrellas'/> :
+    PASO ===  2 ? <><UserGreeting name="Ana García" occupation="Desarrolladora Frontend" /></> :
     PASO ===  3 ? <CurrentDateDisplay /> :
     PASO ===  4 ? (
-       <div style={{ display: 'flex', gap: 12 }}>
-         <ColoredBox color="#0070f3" label="Primary" />
-         <ColoredBox color="#22c55e" label="Success" />
-         <ColoredBox color="#e00"    label="Danger" />
-       </div>
-     ) :
-    PASO ===  5 ? <ConditionalGreeting isLoggedIn={false} userName="Carlos" timeOfDay="afternoon" /> :
-    PASO ===  6 ? <FruitList fruits={fruits} title="Frutas favoritas"  /> :
+      <div style={{ display: 'flex', gap: 12 }}>
+        <ColoredBox color="#0070f3" label="Primary" borderRadius={50}/>
+        <ColoredBox color="#22c55e" label="Success" borderRadius={130} />
+        <ColoredBox color="#e00"  borderRadius={40}  />
+      </div>
+    ) :
+    PASO ===  5 ? <ConditionalGreeting isLoggedIn={true} userName="Carlos" timeOfDay="evening" /> :
+    PASO ===  6 ? <FruitList fruits={fruits} title="Frutas favoritas" /> :
     PASO ===  7 ? (
       <div style={{ display: 'flex', gap: 24, alignItems: 'flex-end' }}>
         <PriceTag amount={99.99} currency="USD" />
         <PriceTag amount={99.99} currency="USD" discountPercent={20} />
       </div>
-
     ) :
     PASO ===  8 ? (
       <div style={{ display: 'flex', gap: 8 }}>
         <StatusBadge status="active" />
-        <StatusBadge status="pending" />
+        <StatusBadge status="pending" label="En revisión" />
         <StatusBadge status="error" />
-        <StatusBadge status="inactive" />
+        <StatusBadge status="inactive" label="Inactivation" />
       </div>
     ) :
     PASO ===  9 ? (
@@ -94,12 +95,24 @@ export default function App() {
           { label: 'Total',     value: '$94.99', highlight: true },
         ]}
       />
-    ) : (
-      <p style={{ color: '#e00' }}>Paso {PASO}: crea el componente primero</p>
-    )
-
+    ):
+    /*PASO === 11 ? (
+      <SimpleInfoCars
+        title="Resumen del pedido"
+        rows={[
+          { label: 'Marca',  value: 'Subaru' },
+          { label: 'Modelo',   value: 'WRX' },
+          { label: 'Año',     value: '2026'},
+          { label: 'Precio',   value: '$60000.00'},
+          { label: 'Envio',   value: '$25.00'},
+          { label: 'Total',   value: '$60025.00', highlight: true },
+        ]}
+        
+      />
+    ) : */
+    <p style={{ color: '#e00' }}>Paso {PASO}: crea el componente primero</p>
   return (
-    <main style={{ maxWidth: 540, margin: '40px auto', fontFamily: 'sans-serif', padding: '0 16px' }}>
+    <main style={{ maxWidth: 1260, margin: '40px auto', fontFamily: 'sans-serif', padding: '0 16px' }}>
       {content}
     </main>
   )

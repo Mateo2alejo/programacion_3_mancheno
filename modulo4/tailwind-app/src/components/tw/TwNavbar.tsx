@@ -18,7 +18,7 @@ export default function TwNavbar() {
         <nav className="flex items-center gap-1">
           <NavLink to="/"      className={linkClass} end>Inicio</NavLink>
           <NavLink to="/about" className={linkClass}>Acerca de</NavLink>
-          <NavLink to="/contact" className={linkClass}>Contáctanos</NavLink>
+          <NavLink to="/contact" className={linkClass}>Contacto</NavLink>
         </nav>
       </div>
     </header>

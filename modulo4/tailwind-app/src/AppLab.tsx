@@ -2,11 +2,10 @@
 
 import { useState } from 'react'
 import LabTwButtons from './lab/LabTwButtons'
-import LabTwAlert from './lab/LabTwAlert'
-import LabTwCard from './lab/LabTwCard'
-import LabTwForm from './lab/LabTwForm'
-import LabTwTable from './lab/LabTwTable'
-
+import LabTwAlert   from './lab/LabTwAlert'
+import LabTwCard    from './lab/LabTwCard'
+import LabTwForm    from './lab/LabTwForm'
+import LabTwTable   from './lab/LabTwTable'
 
 type LabKey = 'buttons' | 'alert' | 'card' | 'form' | 'table'
 
@@ -31,13 +30,9 @@ export default function AppLab() {
       </div>
 
       {lab === 'buttons' && <LabTwButtons />}
-    
       {lab === 'alert'   && <LabTwAlert />}
-    
       {lab === 'card'    && <LabTwCard />}
-      
       {lab === 'form'    && <LabTwForm />}
-      
       {lab === 'table'   && <LabTwTable />}
     </div>
   )

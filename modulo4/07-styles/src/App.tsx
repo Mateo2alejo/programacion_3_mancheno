@@ -12,7 +12,7 @@ import './theme/theme.css'
 
 // ┌──────────────────────────────────────────────────────────────────────┐
 // │  Cambia PASO y guarda (Ctrl+S) para navegar entre componentes.      │
-// │  1  CssGlobalDemo        —1   clases globales y riesgo de colisión     │
+// │  1  CssGlobalDemo        — clases globales y riesgo de colisión     │
 // │  2  InlineStyleDemo      — objetos JS, sin :hover ni @media         │
 // │  3  CssModuleDemo        — scope local, :hover con CSS Modules      │
 // │  4  StyledComponentsDemo — CSS-in-JS con props transient ($)        │
@@ -20,7 +20,7 @@ import './theme/theme.css'
 // │  6  HoverDemo            — hook useHover para efectos hover         │
 // │  7  ThemePanel           — Context + CSS variables para theming     │
 // └──────────────────────────────────────────────────────────────────────┘
-const PASO = 1
+const PASO = 7
 
 export default function App() {
   const content =

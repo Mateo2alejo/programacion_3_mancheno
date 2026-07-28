@@ -10,7 +10,7 @@ import ShoppingCart     from './components/ShoppingCart'
 // │  2  RegistrationForm  — formulario con validación y estados de envío│
 // │  3  ShoppingCart      — carrito de compras completo                 │
 // └──────────────────────────────────────────────────────────────────────┘
-const PASO = 3c
+const PASO = 3
 
 export default function App() {
   const content =

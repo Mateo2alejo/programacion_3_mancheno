@@ -5,8 +5,8 @@ import type { User } from '@/types/user.types'
 import { Button } from '@/components/ui/button'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import UserFormDialog from '@/components/private/UserFormDialog'
-import ConfirmDialog from '@/components/ConfirmDialog'
 import { useToastStore } from '@/store/toast.store'
+import ConfirmDialog from '@/components/ConfirmDialog'
 
 export default function UsersPage() {
   const [users, setUsers] = useState<User[]>([])
@@ -22,14 +22,14 @@ export default function UsersPage() {
 
   useEffect(() => { load() }, [])
 
-  const handleDelete = async (id?: string) => {
-      const targetId = id ?? deleteTarget?.id
-      if (!targetId) return
-      await deleteUser(targetId)
-      showToast('Usuario eliminado', 'success')
-      setDeleteTarget(null)
-      load()
-    }
+  const handleDelete = async () => {
+    if (!deleteTarget) return
+    await deleteUser(deleteTarget.id)
+    showToast('Usuario eliminado', 'success')
+    setDeleteTarget(null)
+    load()
+  }
+
 
   return (
     <div className="mx-auto max-w-2xl space-y-4 p-8">
@@ -50,8 +50,8 @@ export default function UsersPage() {
                 <Button variant="outline" size="sm" onClick={() => { setEditing(user); setDialogOpen(true) }}>
                   Editar
                 </Button>
-                <Button variant="destructive" size="sm" onClick={() => handleDelete(user.id)}>
-                  Borrar
+                <Button variant="destructive" size="sm" onClick={() => setDeleteTarget(user)}>
+                  Eliminar
                 </Button>
               </TableCell>
             </TableRow>

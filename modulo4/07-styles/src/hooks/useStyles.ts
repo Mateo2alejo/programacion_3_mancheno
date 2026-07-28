@@ -9,14 +9,14 @@ interface UseStylesReturn {
   setSize:  (size: number) => void
   setBold:  (bold: boolean) => void
   reset:    () => void
-  setbackgroundColor: (color: string) => void
+  setBackgroundColor: (backgroundColor:string) => void
 }
 
 const DEFAULT: CSSProperties = {
-  color:      '#111827',
+  backgroundColor: '#1b43a0',
+  color:      '#10141d',
   fontSize:   16,
   fontWeight: 400,
-  backgroundColor: '#ffffff'
 }
 
 export function useStyles(
@@ -26,6 +26,10 @@ export function useStyles(
 
   const setColor = useCallback((color: string) => {
     setStyle(prev => ({ ...prev, color }))
+  }, [])
+
+  const setBackgroundColor = useCallback((backgroundColor: string) => {
+    setStyle(prev => ({ ...prev, backgroundColor }))
   }, [])
 
   const setSize = useCallback((size: number) => {
@@ -38,9 +42,5 @@ export function useStyles(
 
   const reset = useCallback(() => setStyle(initial), [initial])
 
-  const setbackgroundColor = useCallback((color: string) => {
-    setStyle(prev => ({ ...prev, backgroundColor: color }))
-  }, [])
-
-  return { style, setColor, setSize, setBold, reset, setbackgroundColor }
+  return { style, setColor, setSize, setBold, reset, setBackgroundColor }
 }

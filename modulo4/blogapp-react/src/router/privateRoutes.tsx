@@ -2,9 +2,10 @@
 import { Route } from 'react-router-dom'
 import DashboardHomePage from '@/pages/private/DashboardHomePage'
 import CategoriesPage from '@/pages/private/CategoriesPage'
-import PostsPage from '@/pages/private/PostsPage'
+import PostFormPage from '@/pages/private/PostFormPage'
 import ProfilePage from '@/pages/private/ProfilePage'
 import CoursesPage from '@/pages/private/CoursesPage'
+import PostsPage from '@/pages/private/PostsPage'
 import UsersPage from '@/pages/private/UsersPage'
 
 export const privateRoutes = [
@@ -13,5 +14,7 @@ export const privateRoutes = [
   <Route key="cursos" path="/cursos" element={<CoursesPage />} />,
   <Route key="usuarios" path="/usuarios" element={<UsersPage />} />,
   <Route key="posts" path="/posts" element={<PostsPage />} />,
+  <Route key="post-nuevo" path="/posts/nuevo" element={<PostFormPage />} />,
+  <Route key="post-editar" path="/posts/:id/editar" element={<PostFormPage />} />,
   <Route key="perfil" path="/perfil" element={<ProfilePage />} />,
 ]

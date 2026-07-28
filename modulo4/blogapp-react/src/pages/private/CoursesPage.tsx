@@ -16,9 +16,9 @@ const ESTADO_STYLES: Record<string, string> = {
 export default function CoursesPage() {
   const [courses, setCourses] = useState<Curso[]>([])
   const [editing, setEditing] = useState<Curso | null>(null)
-  const [deleteTarget, setDeleteTarget] = useState<Curso | null>(null)
   const [dialogOpen, setDialogOpen] = useState(false)
   const showToast = useToastStore((s) => s.show)
+  const [deleteTarget, setDeleteTarget] = useState<Curso | null>(null)
 
   const load = async () => {
     const result = await getCourses(1, 50)
@@ -27,8 +27,9 @@ export default function CoursesPage() {
 
   useEffect(() => { load() }, [])
 
-  const handleDelete = async (id: string) => {
-    await deleteCourse(id)
+  const handleDelete = async () => {
+    if (!deleteTarget) return
+    await deleteCourse(deleteTarget._id)
     showToast('Curso eliminado', 'success')
     setDeleteTarget(null)
     load()
@@ -68,7 +69,7 @@ export default function CoursesPage() {
                   Editar
                 </Button>
                 <Button variant="destructive" size="sm" onClick={() => setDeleteTarget(curso)}>
-                  Borrar
+                  Eliminar
                 </Button>
               </TableCell>
             </TableRow>
@@ -81,13 +82,12 @@ export default function CoursesPage() {
         course={editing}
         onSaved={load}
       />
-
       <ConfirmDialog
         open={!!deleteTarget}
         onOpenChange={(open) => !open && setDeleteTarget(null)}
         title="Eliminar curso"
         description={`¿Seguro que quieres eliminar "${deleteTarget?.nombre}"? Esta acción no se puede deshacer.`}
-        onConfirm={() => deleteTarget && handleDelete(deleteTarget._id)}
+        onConfirm={handleDelete}
       />
     </div>
   )

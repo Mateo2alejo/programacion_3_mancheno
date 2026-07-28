@@ -4,22 +4,11 @@ import PrimeSieve        from './components/PrimeSieve'
 import FilteredCatalog   from './components/FilteredCatalog'
 import OrderMetrics      from './components/OrderMetrics'
 import MultiTagFilter    from './components/MultiTagFilter'
-
-
+//USE CALLBACK
 import MemoizedList    from './components/MemoizedList'
-import SearchWithFetch from './components/SearchWithFetch'
-import FilterTable     from './components/FilterTable'
-import PaginatedFetch  from './components/PaginatedFetch'
-
-import ModalDemo        from './components/ModalDemo'
-// import QuantitySelector from './components/QuantitySelector'
-import ThemeSelector    from './components/ThemeSelector'
-import PostList from './components/Post'
-// import LiveSearch       from './components/LiveSearch'
-// import PostList         from './components/PostList'
-// import ResponsiveLayout from './components/ResponsiveLayout'
-// import CodeBlock        from './components/CodeBlock'
-
+// import SearchWithFetch from './components/SearchWithFetch'
+// import FilterTable     from './components/FilterTable'
+// import PaginatedFetch  from './components/PaginatedFetch'
 
 
 // ┌──────────────────────────────────────────────────────────────────────┐
@@ -29,30 +18,20 @@ import PostList from './components/Post'
 // │  3  OrderMetrics     — múltiples useMemo derivados de un filtro     │
 // │  4  MultiTagFilter   — filtro AND por tags con conteos memoizados   │
 // └──────────────────────────────────────────────────────────────────────┘
-const PASO = 13
+const PASO = 5
 
 export default function App() {
   const content =
+  // USE MEMO
     PASO === 1 ? <PrimeSieve /> :
     PASO === 2 ? <FilteredCatalog /> :
     PASO === 3 ? <OrderMetrics /> :
     PASO === 4 ? <MultiTagFilter /> :
-
-    // useCllback
+  // USE CALLBACK
     PASO === 5 ? <MemoizedList /> :
     // PASO === 6 ? <SearchWithFetch /> :
     // PASO === 7 ? <FilterTable /> :
-    PASO === 8 ? <PaginatedFetch /> :
-
-    // Hooks personalizados
-
-    PASO === 9 ? <ModalDemo /> :
-    // PASO === 10 ? <QuantitySelector /> :
-    PASO === 11 ? <ThemeSelector /> :
-    // PASO === 12 ? <LiveSearch /> :
-     PASO === 13 ? <PostList /> :
-    // PASO === 14 ? <ResponsiveLayout /> :
-    // PASO === 7 ? <CodeBlock code={EXAMPLE_CODE} language="tsx" /> :
+    // PASO === 8 ? <PaginatedFetch /> :
     <p style={{ color: '#e00' }}>Paso {PASO}: crea el componente primero</p>
 
   return (

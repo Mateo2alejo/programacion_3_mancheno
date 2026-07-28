@@ -1,14 +1,8 @@
 // src/AppLab.tsx
 
 import { useState } from 'react'
-import LabTwButtons from './lab/LabTwButtons'
-import LabTwAlert from './lab/LabTwAlert'
-import LabTwCard from './lab/LabTwCard'
-import LabTwForm from './lab/LabTwForm'
-import LabTwTable from './lab/LabTwTable'
 import FormularioUsuario from './components/shadcn/FormularioUsuario'
 import TarjetaProducto from './components/shadcn/TarjetaProducto'
-
 
 type LabKey = 'buttons' | 'alert' | 'card' | 'form' | 'table'
 
@@ -24,23 +18,15 @@ export default function AppLab() {
           value={lab}
           onChange={e => setLab(e.target.value as LabKey)}
         >
-          
           <option value="card">Cards</option>
           <option value="form">Form</option>
-
         </select>
       </div>
 
-
       {lab === 'form' && <FormularioUsuario />}
-    
-      {lab === 'buttons'   && <TarjetaProducto />}
-    
-      {lab === 'card'    && <LabTwCard />}
-      
-      {lab === 'form'    && <LabTwForm />}
-      
-      {lab === 'table'   && <LabTwTable />}
+      {lab === 'card'    && <TarjetaProducto />}
+      {/*lab === 'form'    && <LabTwForm />}
+      {lab === 'table'   && <LabTwTable />*/}
     </div>
   )
 }

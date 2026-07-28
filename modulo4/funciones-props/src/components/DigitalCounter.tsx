@@ -11,20 +11,27 @@ interface DigitalCounterProps {
 export default function DigitalCounter({
   initialValue = 0,
   step = 1,
-  label = 'Contador',
-}) {
+  label = 'Contador de Numeros',
+}:DigitalCounterProps) {
   const [count, setCount] = useState(initialValue)
 
   function increment() {
-    setCount((prev) => prev + step)
+    setCount(count + step)
+    setCount((prev) => prev + 1)
+    setCount((prev) => prev + 1)
+    setCount((prev) => prev + 1)
+    console.log('render', count)
   }
+
 
   function decrement() {
     setCount(count - step)
+    console.log('render', count)
   }
 
   function reset() {
     setCount(initialValue)
+    console.log('render', count)
   }
 
   return (
@@ -38,6 +45,10 @@ export default function DigitalCounter({
       <button onClick={reset} style={{ ...btnStyle, fontSize: 12, color: '#999' }}>
         Reset
       </button>
+      <br/>
+      <div>
+        Otro contador: {count}
+      </div>
     </div>
   )
 }

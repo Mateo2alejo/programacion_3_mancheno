@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Vuelos MM</title>
+    <script src="dom04-eventos.mp.js" defer></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .boton {
+            background-color: #1a5276;
+            padding: 10px 20px;
+            color: aliceblue;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px 0;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="titulo">Gestión de Vuelos MM</h1>
+    
+    <h2 id="titulo-seccion" onclick="alert('Sistema de Torre de Control Activo')">Eventos del Panel</h2>
+
+    <button class="boton" id="btn" onclick="mostrarAlerta()">Alerta de Torre</button>
+    
+    <br>
+
+    <button class="boton" id="btn2" onclick="agregarVuelo()">Agregar Vuelo (Inline)</button>
+    <ul id="lista-vuelos"></ul>
+
+    <button class="boton" id="btn3">Agregar Vuelo (Listener)</button>
+    <ul id="lista-vuelos2"></ul>
+
+    <button class="boton" id="btn4" onclick="modificarTexto()">Actualizar Estado de Vuelo</button>
+    <p id="texto-modificable">Vuelo MM-102: En espera</p>
+
+    <button class="boton" id="btn5" onclick="modificarH2()">Modificar Título</button>
+    <h2 id="h2-mod">Panel de Operaciones</h2>
+
+</body>
+
+</html>

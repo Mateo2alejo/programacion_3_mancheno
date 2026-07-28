@@ -3,11 +3,11 @@
 import { useStyles } from '../hooks/useStyles'
 
 export default function LiveStyleEditor() {
-  const { style, setColor, setSize, setBold, reset, setbackgroundColor } = useStyles({
+  const { style, setColor, setSize, setBold, reset, setBackgroundColor } = useStyles({
+    backgroundColor: '#2c5899',
     color:      '#111827',
     fontSize:   16,
     fontWeight: 400,
-    backgroundColor: '#ffffff'
   })
 
   return (
@@ -31,10 +31,13 @@ export default function LiveStyleEditor() {
             onChange={e => setColor(e.target.value)}
             style={{ width: 48, height: 32, border: 'none', cursor: 'pointer' }}
           />
+        </label>
+
+        <label style={{ display: 'flex', flexDirection: 'column', gap: 4, fontSize: 13, color: 'var(--muted)' }}>
+          Color de fondo
           <input
-            type="color"
-            defaultValue="#ffffff"
-            onChange={e => setbackgroundColor(e.target.value)}
+            type="backgroundColor"
+            onChange={e => setBackgroundColor(e.target.value)}
             style={{ width: 48, height: 32, border: 'none', cursor: 'pointer' }}
           />
         </label>

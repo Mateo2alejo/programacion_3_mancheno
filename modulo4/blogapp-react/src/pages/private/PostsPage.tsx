@@ -8,14 +8,12 @@ import { Badge } from '@/components/ui/badge'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import PostFormDialog from '@/components/private/PostFormDialog'
 import ConfirmDialog from '@/components/ConfirmDialog'
-import { useToastStore } from '@/store/toast.store'
 
 export default function PostsPage() {
   const [posts, setPosts] = useState<Post[]>([])
   const [editing, setEditing] = useState<Post | null>(null)
   const [dialogOpen, setDialogOpen] = useState(false)
-  const showToast = useToastStore((s) => s.show)
-const [deleteTarget, setDeleteTarget] = useState<Post | null>(null)
+  const [deleteTarget, setDeleteTarget] = useState<Post | null>(null)
 
   const load = async () => {
     const result = await getPosts({ limit: 50 })
@@ -24,11 +22,10 @@ const [deleteTarget, setDeleteTarget] = useState<Post | null>(null)
 
   useEffect(() => { load() }, [])
 
-  const handleDelete = async (id?: string) => {
-    const targetId = id ?? deleteTarget?.id
-    if (!targetId) return
-    await deletePost(targetId)
-    showToast('Post eliminado', 'success')
+  const handleDelete = async () => {
+    if (!deleteTarget) return
+    await deletePost(deleteTarget.id)
+    showToast('Categoría eliminada', 'success')
     setDeleteTarget(null)
     load()
   }
@@ -54,8 +51,8 @@ const [deleteTarget, setDeleteTarget] = useState<Post | null>(null)
                 <Button variant="outline" size="sm" onClick={() => { setEditing(post); setDialogOpen(true) }}>
                   Editar
                 </Button>
-                <Button variant="destructive" size="sm" onClick={() => handleDelete(post.id)}>
-                  Borrar
+                <Button variant="destructive" size="sm" onClick={() => setDeleteTarget(post)}>
+                  Eliminar
                 </Button>
               </TableCell>
             </TableRow>
@@ -71,14 +68,17 @@ const [deleteTarget, setDeleteTarget] = useState<Post | null>(null)
         post={editing}
         onSaved={load}
       />
-
       <ConfirmDialog
-          open={!!deleteTarget}
-          onOpenChange={(open) => !open && setDeleteTarget(null)}
-          title="Eliminar post"
-          description={`¿Seguro que quieres eliminar "${deleteTarget?.title}"? Esta acción no se puede deshacer.`}
-          onConfirm={handleDelete}
-        />
+        open={!!deleteTarget}
+        onOpenChange={(open) => !open && setDeleteTarget(null)}
+        title="Eliminar categoría"
+        description={`¿Seguro que quieres eliminar "${deleteTarget?.title}"? Esta acción no se puede deshacer.`}
+        onConfirm={handleDelete}
+      />
     </div>
   )
+}
+
+function showToast(arg0: string, arg1: string) {
+  throw new Error('Function not implemented.')
 }

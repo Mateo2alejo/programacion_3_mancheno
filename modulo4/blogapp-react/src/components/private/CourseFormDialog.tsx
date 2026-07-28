@@ -38,7 +38,7 @@ interface Props {
 export default function CourseFormDialog({ open, onOpenChange, course, onSaved }: Props) {
   const { register, handleSubmit, reset, formState: { errors, isSubmitting } } =
     useForm<FormValues>({ resolver: zodResolver(schema) })
-    const showToast = useToastStore((s) => s.show)
+  const showToast = useToastStore((s) => s.show)
 
   useEffect(() => {
     reset({
@@ -74,7 +74,7 @@ export default function CourseFormDialog({ open, onOpenChange, course, onSaved }
     }
     if (course) await updateCourse(course._id, payload)
     else await createCourse(payload)
-    showToast(`Curso ${course ? 'actualizado' : 'creado'} con éxito`, 'success')
+    showToast(course ? 'Categoría actualizada' : 'Categoría creada', 'success')
     onOpenChange(false)
     onSaved()
   }
@@ -160,4 +160,8 @@ export default function CourseFormDialog({ open, onOpenChange, course, onSaved }
       </DialogContent>
     </Dialog>
   )
+}
+
+function showToast(arg0: string, arg1: string) {
+  throw new Error('Function not implemented.')
 }

@@ -1,31 +1,27 @@
-// Asegúrate de que la ruta y el nombre del archivo sean correctos
-import AnimalCatalogList from './components/MascotasList'
+// src/App.tsx
+import PetCatalogList from './components/PetsCard'
 
-// Definimos la interfaz aquí o la importamos si está en otro lado
-export interface Animal {
+interface Pet {
   id: number
   name: string
+  type: string
+  edad?: number
   price: number
-  edad: number
 }
 
-const animales: Animal[] = [
-  { id: 1, name: 'Perrito Golden', price: 150.00, edad: 2 },
-  { id: 2, name: 'Gatito Siames',  price: 80.00,  edad: 1 },
-  { id: 3, name: 'Loro Hablador',  price: 200.00, edad: 5 },
+const catalog: Pet[] = [
+  { id: 1, name: 'Felipe', type: 'felino', edad: 2, price: 10},
+  { id: 2, name: 'Negrito', type: 'canino', edad: 3, price: 15},
+  { id: 3, name: 'Garph', type: 'felino', edad: 5, price: 20},
+  { id: 4, name: 'Deacon', type: 'canino' , edad: 6, price: 15},
+  { id: 5, name: 'Pancho', type: 'felino', edad: 4, price: 14.99},
 ]
 
 export default function App() {
   return (
     <main style={{ maxWidth: 540, margin: '40px auto', fontFamily: 'sans-serif' }}>
-      
-      <h1>Refugio de Animales</h1>
-      
-      {/* Usamos exactamente el mismo nombre que pusimos en el import */}
-      <AnimalCatalogList 
-        animals={animales} 
-        title="Mascotas en adopción" 
-      />
+
+      <PetCatalogList pets={catalog} title="Lista de Mascotas" />
 
     </main>
   )

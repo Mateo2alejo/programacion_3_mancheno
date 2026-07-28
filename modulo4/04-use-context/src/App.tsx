@@ -13,7 +13,7 @@ import UserBadge    from './components/UserBadge'
 // │  3  LoginForm     — formulario de login conectado a AuthContext      │
 // │  4  AppHeader     — header con dos contextos simultáneos            │
 // └──────────────────────────────────────────────────────────────────────┘
-const PASO = 2
+const PASO = 4
 
 export default function App() {
   const { state } = useAuth()

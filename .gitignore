@@ -1,110 +1,58 @@
-# =========================
-# Node.js
-# =========================
+# --- Dependencias ---
 node_modules/
+**/node_modules/
+.pnp
+.pnp.js
+
+# --- Logs y Debugging ---
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-pnpm-debug.log*
-package-lock.json
-yarn.lock
-pnpm-lock.yaml
+lerna-debug.log*
+.pnpm-debug.log*
 
-# =========================
-# Build / Output
-# =========================
-dist/
-build/
-out/
-.next/
-.nuxt/
-coverage/
-.cache/
-.tmp/
-.temp/
-
-# =========================
-# Logs
-# =========================
-logs/
-*.log
-
-# =========================
-# Environment variables
-# =========================
-.env
-.env.*
-!.env.example
-
-# =========================
-# OS files
-# =========================
-.DS_Store
-Thumbs.db
-
-# =========================
-# IDEs / Editors
-# =========================
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# =========================
-# TypeScript
-# =========================
+# --- NestJS y Compilación ---
+/dist
+**/dist/
+/out
+**/out/
+.nestcli.json
+# Si usas TypeScript, ignorar el build info
 *.tsbuildinfo
 
-# =========================
-# Testing
-# =========================
-coverage/
-jest.config.js.snap
+# --- React (Vite/CRA) ---
+/build
+**/build/
+.eslintcache
+.stylelintcache
+# Carpeta de cache de Vite
+.vite/
 
-# =========================
-# React
-# =========================
-build/
-.next/
-node_modules/
+# --- Variables de Entorno (¡CRÍTICO!) ---
+.env
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
+*.env
+!.env.example
 
-# =========================
-# NestJS
-# =========================
-dist/
-node_modules/
+# --- Testing ---
+/coverage
+**/coverage/
+.nyc_output
 
-# =========================
-# Monorepo (importante)
-# =========================
+# --- IDEs y Editores ---
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
 
-# Ignorar node_modules en cualquier subcarpeta
-**/node_modules/
-
-# Ignorar builds en cualquier subcarpeta
-**/dist/
-**/build/
-**/.next/
-**/out/
-
-# Ignorar logs en cualquier subcarpeta
-**/*.log
-
-# Ignorar archivos de entorno en cualquier subcarpeta
-**/.env
-**/.env.*
-
-# =========================
-# Docker (opcional)
-# =========================
-docker-compose.override.yml
-
-# =========================
-# Misc
-# =========================
-*.tgz
-*.tar.gz
+# --- Sistema ---
+.DS_Store
+Thumbs.db

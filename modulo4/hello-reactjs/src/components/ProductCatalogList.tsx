@@ -1,9 +1,11 @@
+// src/components/ProductCatalogList.tsx
+
 interface Product {
   id: number
   name: string
   price: number
   outOfStock?: boolean
-  category: string
+  category?: string
 }
 
 interface ProductCatalogListProps {
@@ -11,7 +13,10 @@ interface ProductCatalogListProps {
   title?: string
 }
 
-export default function ProductCatalogList({ products, title = 'Catálogo' }: ProductCatalogListProps) {
+export default function ProductCatalogList({
+  products,
+  title = 'Catálogo',
+}: ProductCatalogListProps) {
   return (
     <section>
       <h2 style={{ marginBottom: 16 }}>{title}</h2>
@@ -20,7 +25,7 @@ export default function ProductCatalogList({ products, title = 'Catálogo' }: Pr
         <p style={{ color: '#999' }}>No hay productos disponibles.</p>
       )}
 
-      <ul style={{ listStyle: 'none', padding: 0 }}>
+      <ul style={{ listStyle: 'disc', padding: 0 }}>
         {products.map((product) => (
           <li
             key={product.id}
@@ -39,14 +44,17 @@ export default function ProductCatalogList({ products, title = 'Catálogo' }: Pr
                   Agotado
                 </em>
               )}
-              <em style={{ marginLeft: 8, color: '#666', fontSize: 14 }}>
-                ({product.category})
-              </em>
+                <em style={{ marginLeft: 12, color: 'rgb(255, 255, 255)' }}>
+                    {product.category}
+                </em>
             </span>
             <strong>${product.price.toFixed(2)}</strong>
           </li>
         ))}
       </ul>
+      <footer>
+        {products.length} producto(s)
+      </footer>
     </section>
   )
 }

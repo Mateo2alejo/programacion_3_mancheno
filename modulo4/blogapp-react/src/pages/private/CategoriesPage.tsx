@@ -8,13 +8,19 @@ import CategoryFormDialog from '@/components/private/CategoryFormDialog'
 import { useToastStore } from '@/store/toast.store'
 import ConfirmDialog from '@/components/ConfirmDialog'
 
-
 export default function CategoriesPage() {
   const [categories, setCategories] = useState<Category[]>([])
   const [editing, setEditing] = useState<Category | null>(null)
   const [dialogOpen, setDialogOpen] = useState(false)
   const showToast = useToastStore((s) => s.show)
   const [deleteTarget, setDeleteTarget] = useState<Category | null>(null)
+
+  const load = async () => {
+    const result = await getCategories({ limit: 50 })
+    setCategories(result.items)
+  }
+
+  useEffect(() => { load() }, [])
 
   const handleDelete = async () => {
     if (!deleteTarget) return
@@ -24,13 +30,6 @@ export default function CategoriesPage() {
     load()
   }
 
-
-  const load = async () => {
-    const result = await getCategories({ limit: 50 })
-    setCategories(result.items)
-  }
-
-  useEffect(() => { load() }, [])
 
   return (
     <div className="mx-auto max-w-2xl space-y-4 p-8">

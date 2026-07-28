@@ -1,10 +1,14 @@
-// src/App.tsx
+import AppHome from './AppHome'
+// import AppLab from './AppLab'
 
-import AppLab from './AppLab'
-// import AppHome from './AppHome'
-
-export default function App() {
-  return <AppLab />
-  // Fase 2 — descomenta y comenta la línea anterior:
-  // return <AppHome />
+function App() {
+  
+  return (
+    <>
+      {/* <AppLab /> */}
+      <AppHome />
+    </>
+  )
 }
+
+export default App

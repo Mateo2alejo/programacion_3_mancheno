@@ -5,7 +5,7 @@ import TwNavbar from './components/tw/TwNavbar'
 import TwFooter from './components/tw/TwFooter'
 import HomeTW   from './pages/HomeTW'
 import AboutTW  from './pages/AboutTW'
-import ContactUs from './pages/ContactUs'
+import ContactUsTW from './pages/ContactUsTW'
 
 export default function AppHome() {
   return (
@@ -14,7 +14,7 @@ export default function AppHome() {
       <Routes>
         <Route path="/"      element={<HomeTW />} />
         <Route path="/about" element={<AboutTW />} />
-        <Route path="/contact" element={<ContactUs />} />
+        <Route path="/contact" element={<ContactUsTW />} />
       </Routes>
       <TwFooter />
     </BrowserRouter>

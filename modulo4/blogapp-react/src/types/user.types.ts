@@ -8,7 +8,6 @@ export interface User {
   profile?: string
   avatarUrl?: string
 }
-
 // src/types/user.types.ts (agregar)
 export interface CreateUserPayload {
   username: string
